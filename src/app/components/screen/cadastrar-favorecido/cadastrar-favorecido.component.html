@@ -1,0 +1,22 @@
+<form class="cell-12" #f="ngForm" (ngSubmit)="cadastrar(f)">
+  <h2>Cadastrar novo favorecido</h2>
+  <hr />
+
+  <div class="cell-12">
+    <label for="favorecido-nome" class="cell-12">Nome</label>
+    <input
+      type="text"
+      name="nome"
+      ngModel
+      id="favorecido-nome"
+      class="cell-12"
+    />
+    <br />
+    <div class="float-right">
+      <button class="button bg-green fg-white">
+        <span class="mif-plus icon margin"> </span>
+        Salvar
+      </button>
+    </div>
+  </div>
+</form>

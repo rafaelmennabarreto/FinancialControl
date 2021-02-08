@@ -1,7 +1,7 @@
 import { BaseEntity } from '../entitiesBase/BaseEntitiy';
 
 type FavorecidoParams = {
-  id?: number;
+  id?: string;
   nome: string;
 };
 
@@ -15,5 +15,19 @@ export class Favorecido extends BaseEntity {
 
   public get Nome() {
     return this._nome;
+  }
+
+  public toJson(): any {
+    const Nome = this._nome;
+    const Id = this.Id;
+    const CreatedAt = this.CreatedAt;
+    const ModifiedAt = this.ModifiedAt;
+
+    return {
+      Id,
+      Nome,
+      CreatedAt,
+      ModifiedAt,
+    };
   }
 }

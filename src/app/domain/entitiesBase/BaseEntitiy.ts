@@ -1,15 +1,15 @@
 export abstract class BaseEntity {
-  private _Id: number;
+  private _Id: string;
   private _CreatedAt: Date;
   public ModifiedAt: Date;
 
-  constructor(id?: number) {
-    this._Id = id ?? 0;
+  constructor(id?: string) {
+    this._Id = id ?? '0';
     this._CreatedAt = new Date();
     this.ModifiedAt = new Date();
   }
 
-  public get Id(): number {
+  public get Id(): string {
     return this._Id;
   }
 

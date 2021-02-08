@@ -1,7 +1,7 @@
 import { BaseEntity } from '../entitiesBase/BaseEntitiy';
 
 type EstabelecimentoParams = {
-  id?: number;
+  id?: string;
   nome: string;
 };
 

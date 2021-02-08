@@ -2,7 +2,7 @@ import { BaseEntity } from '../entitiesBase/BaseEntitiy';
 import { Estabelecimento } from './Estabelecimento';
 
 type DespesaParam = {
-  id: number;
+  id: string;
   valor: number;
   dataVencimento: Date;
   estabelecimento: Estabelecimento;

@@ -22,6 +22,8 @@ export class CadastrarFavorecidoComponent implements OnInit {
     });
 
     //send message to main process;
-    this._ipcService.send('CadastrarFavorecido', { content: favorecido });
+    this._ipcService.send('CadastrarFavorecido', {
+      content: favorecido.toJson(),
+    });
   }
 }

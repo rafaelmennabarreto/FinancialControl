@@ -1,9 +1,12 @@
 // TODO importar e criar servidor do express
-require("./server");
+require("./store");
+const {
+  favorecidoController,
+} = require("./store/controllers/favorecidoController");
 const { app, BrowserWindow, ipcMain } = require("electron");
 const url = require("url");
 const path = require("path");
-const isPRd = false;
+const isPRd = true;
 
 let mainWindow;
 
@@ -25,6 +28,8 @@ function createWindow() {
       slashes: true,
     });
 
+  console.log(appUrl.toString());
+
   mainWindow.loadURL(appUrl);
 
   // Open the DevTools.
@@ -45,6 +50,7 @@ app.on("activate", function () {
   if (mainWindow === null) createWindow();
 });
 
-ipcMain.on("CadastrarFavorecido", (event, ...args) => {
-  console.log(...args);
+ipcMain.on("CadastrarFavorecido", (event, data) => {
+  const { content } = data;
+  favorecidoController.save(content);
 });

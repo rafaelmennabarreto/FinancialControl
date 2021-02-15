@@ -15,12 +15,12 @@ export class IpcServiceService {
     }
   }
 
-  public on(
+  public once(
     channel: string,
     listener: (event: IpcRendererEvent, ...args: any[]) => void
   ) {
     if (this._ipc) {
-      this._ipc.on(channel, listener);
+      this._ipc.once(channel, listener);
     } else {
       console.log('deu ruim');
     }

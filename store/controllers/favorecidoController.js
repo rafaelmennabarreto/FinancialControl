@@ -1,16 +1,25 @@
+const { ipcMain } = require("electron");
+
 const { favorecidos } = require("../index");
+const ResponseDto = require("../dto/responseDto");
 
-class favorecidoController {
-  save(favorecido) {
-    favorecidos.insert(favorecido, (err, nd) => {
-      if (err) {
-        console.error("erro : " + err.message);
-      }
-      console.log(nd);
-    });
-  }
-}
+console.log("started favorecido controller");
 
-module.exports = {
-  favorecidoController: new favorecidoController(),
-};
+ipcMain.on("SaveFavorecido", async (event, data) => {
+  const favorecido = data.content;
+
+  favorecidos.insert(favorecido, (err, nd) => {
+    if (err) {
+      console.error("erro : " + err.message);
+    } else {
+      favorecido.Id = nd._id;
+
+      const response = new ResponseDto({
+        message: "salvo com sucesso",
+        data: favorecido,
+      });
+
+      event.reply("SavedFavorecido", response);
+    }
+  });
+});

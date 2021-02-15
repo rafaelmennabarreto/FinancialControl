@@ -11,9 +11,9 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 3000",
     "start:dev": "concurrently \"npm:start\"  \"npm:start:electron\"",
-    "start:electron": "ng build --base-href ./ && electron .",
+    "start:electron": "electron .",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

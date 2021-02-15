@@ -1,12 +1,10 @@
 // TODO importar e criar servidor do express
 require("./store");
-const {
-  favorecidoController,
-} = require("./store/controllers/favorecidoController");
+require("./store/controllers/favorecidoController");
 const { app, BrowserWindow, ipcMain } = require("electron");
 const url = require("url");
 const path = require("path");
-const isPRd = true;
+const isPRd = false;
 
 let mainWindow;
 
@@ -19,7 +17,7 @@ function createWindow() {
     },
   });
 
-  let appUrl = "http://localhost:4200/";
+  let appUrl = "http://localhost:3000/";
 
   if (isPRd)
     appUrl = url.format({
@@ -50,7 +48,10 @@ app.on("activate", function () {
   if (mainWindow === null) createWindow();
 });
 
-ipcMain.on("CadastrarFavorecido", (event, data) => {
-  const { content } = data;
-  favorecidoController.save(content);
-});
+/* exemplo */
+// ipcMain.on("SendData", async (event, data) => {
+//   const { route, content } = data;
+//   var newData = await Routes(route, content);
+//   console.log(newData);
+//   event.sender.send("savedData", newData);
+// });

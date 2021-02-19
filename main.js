@@ -47,11 +47,3 @@ app.on("window-all-closed", function () {
 app.on("activate", function () {
   if (mainWindow === null) createWindow();
 });
-
-/* exemplo */
-// ipcMain.on("SendData", async (event, data) => {
-//   const { route, content } = data;
-//   var newData = await Routes(route, content);
-//   console.log(newData);
-//   event.sender.send("savedData", newData);
-// });

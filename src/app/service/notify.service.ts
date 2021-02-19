@@ -7,9 +7,15 @@ import { notify } from 'metro4';
 export class NotifyService {
   constructor() {}
 
-  sucess(message: string) {
+  Sucess(message: string) {
     notify.create(message, 'Salvo', {
       cls: 'success',
+    });
+  }
+
+  Error(message: string) {
+    notify.create(message, 'Erro', {
+      cls: 'alert',
     });
   }
 }

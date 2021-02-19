@@ -20,18 +20,21 @@ export class CadastrarFavorecidoComponent implements OnInit {
   cadastrar(form: NgForm) {
     const favorecido = new Favorecido({ nome: form.value.nome });
 
-    console.log('clicou');
+    if (!favorecido.IsValid()) {
+      this._notifyService.Error('Verifique se os campos estão preenchidos');
+      return;
+    }
+
     //listem main process response message
     this._ipcService.once('SavedFavorecido', (event, resp) => {
-      var favorecido: Favorecido = resp.data;
-      console.log(event.returnValue);
-      this._notifyService.sucess(resp.message);
-      console.log('oi meu chapa');
+      this._notifyService.Sucess(resp.Message);
+      form.reset();
     });
 
     //send message to main process;
-    this._ipcService.send('SaveFavorecido', {
-      content: favorecido.toJson(),
+    this._ipcService.send('Favorecido', {
+      action: 'SaveFavorecido',
+      content: favorecido.ToJson(),
     });
   }
 }
